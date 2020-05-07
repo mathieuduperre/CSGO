@@ -3,7 +3,7 @@
 ###########################################################
 FROM cm2network/steamcmd:root
 
-LABEL maintainer="walentinlamonos@gmail.com"
+LABEL maintainer="mathieu.duperre@gmail.com"
 
 ENV STEAMAPPID 740
 ENV STEAMAPPDIR /home/steam/csgo-dedicated
@@ -18,7 +18,7 @@ RUN set -x \
 		ca-certificates=20190110 \
 	&& mkdir -p ${STEAMAPPDIR}/csgo \
 	&& cd ${STEAMAPPDIR} \
-	&& wget https://raw.githubusercontent.com/CM2Walki/CSGO/master/etc/entry.sh \
+	&& wget https://raw.githubusercontent.com/mathieuduperre/CSGO/master/etc/entry.sh \
 	&& chmod 755 ${STEAMAPPDIR}/entry.sh \
 	&& cd ${STEAMAPPDIR}/csgo \
 	&& { \
@@ -29,7 +29,7 @@ RUN set -x \
 			echo 'app_update ${STEAMAPPID}'; \
 			echo 'quit'; \
 		} > ${STEAMAPPDIR}/csgo_update.txt \
-	&& wget -qO- https://raw.githubusercontent.com/CM2Walki/CSGO/master/etc/cfg.tar.gz | tar xvzf - \
+	&& wget -qO- https://raw.githubusercontent.com/mathieuduperre/CSGO/master/etc/cfg.tar.gz | tar xvzf - \
 	&& chown -R steam:steam ${STEAMAPPDIR} \
 	&& apt-get remove --purge -y \
 		wget \
